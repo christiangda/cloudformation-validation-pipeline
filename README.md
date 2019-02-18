@@ -54,7 +54,8 @@ python setup.py install
 
 Now you're ready to start building tests and pipelines, to get going create a project skeleton:
 ```bash
-cd ~/
+mkdir my-project
+cd my-project/
 cfn-validation-pipeline-skeleton
 cd validation_pipeline
 ```
