@@ -30,20 +30,27 @@ The following s3 permissions are required for the IAM user/role configured in th
 }
 ```
 
-Ensure that pip and setuptools are up to date:
-```bash
-sudo -H pip install --upgrade setuptools pip
-```
-
 Clone the validation pipeline repo:
 ```bash
-git clone https://github.com/awslabs/aws-cloudformation-validation-pipeline.git
+git clone git clone https://github.com/awslabs/cloudformation-validation-pipeline.git
+cd cloudformation-validation-pipeline/
+```
+
+Prepare Python 2.7 virtualenv
+```bash
+virtualenv -p /usr/bin/python2.7 venv
+cd venv/
+pip install -r requirements.txt
+```
+
+Ensure that pip and setuptools are up to date:
+```bash
+pip install --upgrade setuptools pip
 ```
 
 Install:
 ```bash
-cd aws-cloudformation-validation-pipeline
-sudo -H python setup.py install
+python setup.py install
 ```
 
 Now you're ready to start building tests and pipelines, to get going create a project skeleton:
