@@ -105,3 +105,6 @@ venv.bak/
 
 # code
 code/
+
+# Visual Studio Code
+.vscode/

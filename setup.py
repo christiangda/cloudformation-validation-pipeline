@@ -22,7 +22,8 @@ def get_data_files(directories):
             if dest_path.startswith('code/'):
                 dest_path = dest_path[len('code/'):]
             if not dest_path.startswith('scripts/'):
-                data_files.append(('project-skeleton/validation_pipeline/' + dest_path, paths[k]))
+                data_files.append(
+                    ('project-skeleton/validation_pipeline/' + dest_path, paths[k]))
     return data_files
 
 
@@ -34,16 +35,23 @@ def build_docs(dest_path='code/docs'):
     try:
         import pdoc
     except ImportError:
-        import pip
-        pip.main(['install', 'pdoc'])
+        from pip._internal import main as pipmain
+        pipmain(['--no-cache-dir', 'install', 'pdoc'])
         import pdoc
 
     try:
         import boto3
     except ImportError:
-        import pip
-        pip.main(['install', 'boto3'])
+        from pip._internal import main as pipmain
+        pipmain(['--no-cache-dir', 'install', 'boto3'])
         import boto3
+
+    try:
+        import yaml
+    except ImportError:
+        from pip._internal import main as pipmain
+        pipmain(['--no-cache-dir', 'install', 'pyyaml'])
+        import yaml
 
     try:
         os.mkdir(dest_path)
@@ -79,7 +87,8 @@ class CustomTestCommand(TestCommand):
     user_options = []
 
     def run_tests(self):
-        self._run([sys.executable, '-m', 'unittest', 'discover', '-s', './code/tests'])
+        self._run([sys.executable, '-m', 'unittest',
+                   'discover', '-s', './code/tests'])
 
     @staticmethod
     def _run(command):
