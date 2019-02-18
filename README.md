@@ -39,8 +39,7 @@ cd cloudformation-validation-pipeline/
 Prepare Python 2.7 virtualenv
 ```bash
 virtualenv -p /usr/bin/python2.7 venv
-cd venv/
-pip install -r requirements.txt
+source venv/bin/activate
 ```
 
 Ensure that pip and setuptools are up to date:
